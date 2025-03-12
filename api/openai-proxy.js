@@ -2,6 +2,12 @@
 export default function handler(req, res) {
   // Log the incoming authorization header to check its format
   console.log('Authorization header:', req.headers.authorization);
+  console.log('Request method:', req.method);
+  console.log('Request headers:', JSON.stringify(req.headers));
+
+  // Log environment variables (without showing actual values)
+  console.log('AUTH_TOKEN exists:', !!process.env.AUTH_TOKEN);
+  console.log('OPENAI_API_KEY exists:', !!process.env.OPENAI_API_KEY);
   
   // Optional: Check for authorization
   // For example, check for an API token in headers
