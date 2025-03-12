@@ -8,6 +8,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     fetch('https://api-lvrdrchth-jack-georges-projects.vercel.app/api/openai-proxy', {
       method: 'POST',
       headers: {
+        'Authorization': 'Bearer OPENAI_API_KEY',
         'Content-Type': 'application/json'
         // No API key needed here - it's now securely on your server
       },
