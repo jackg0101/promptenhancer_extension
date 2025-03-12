@@ -1,0 +1,31 @@
+{
+  "manifest_version": 3,
+  "name": "ChatGPT Prompt Enhancer",
+  "icons": {
+   "16": "icon16.png",
+   "32": "icon32.png",
+   "48": "icon48.png",
+   "128": "icon128.png"
+ },
+  "version": "1.4",
+  "description": "Struggling to get the best responses from ChatGPT? Prompt Enhancer helps you refine and optimize your prompts with just one click!",
+  "permissions": [
+    "storage",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://chat.openai.com/*",
+    "https://chatgpt.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://chat.openai.com/*", "https://chatgpt.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+
+}
