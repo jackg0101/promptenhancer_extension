@@ -8,7 +8,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     fetch('https://api-nihel43vq-jack-georges-projects.vercel.app/api/openai-proxy', {
       method: 'POST',
       headers: {
-        'Authorization': 'Bearer your-auth-token-value', // Replace with your AUTH_TOKEN value
+        'Authorization': 'Bearer eLw4cx6UBgTiiGLeButu', // Replace with your AUTH_TOKEN value
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
