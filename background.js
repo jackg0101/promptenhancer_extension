@@ -1,11 +1,11 @@
-// this uses glitch.com as a server to hose my OpenAI API key
+// this uses vercel as a server to host my OpenAI API key
 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message.prompt) {
     // Immediately send a response to keep the message channel open
     sendResponse({ status: "processing" });
 
-    fetch('https://openai-api-key.glitch.me/api/openai/v1/chat/completions', {
+    fetch('https://api-lvrdrchth-jack-georges-projects.vercel.app/api/openai-proxy', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
