@@ -5,7 +5,7 @@ export default function handler(req, res) {
   // Optional: Check for authorization
   // For example, check for an API token in headers
   const authToken = req.headers.authorization;
-  if (authToken !== `Bearer OPENAI_API_KEY`) {
+  if (authToken !== `Bearer ${process.env.AUTH_TOKEN}`) {
     return res.status(403).json({ error: 'Unauthorized' });
   }
 
