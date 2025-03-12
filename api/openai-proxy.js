@@ -1,4 +1,7 @@
 export default function handler(req, res) {
+  // Log the incoming authorization header to check its format
+  console.log('Authorization header:', req.headers.authorization);
+  
   // Optional: Check for authorization
   // For example, check for an API token in headers
   const authToken = req.headers.authorization;
