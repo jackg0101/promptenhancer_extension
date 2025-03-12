@@ -1,0 +1,14 @@
+{
+  "name": "openai-proxy",
+  "version": "1.0.0",
+  "description": "OpenAI API proxy for Chrome extension",
+  "main": "api/openai-proxy.js",
+  "scripts": {
+    "start": "vercel dev",
+    "deploy": "vercel deploy --prod"
+  },
+  "dependencies": {
+    "@vercel/node": "^5.1.12",
+    "axios": "^1.8.2"
+  }
+}
