@@ -5,7 +5,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     // Immediately send a response to keep the message channel open
     sendResponse({ status: "processing" });
     
-    fetch('https://api-nihel43vq-jack-georges-projects.vercel.app/api/openai-proxy', {
+    fetch('https://api-2nwiwi2gx-jack-georges-projects.vercel.app/api/openai-proxy', {
       method: 'POST',
       headers: {
         'Authorization': 'Bearer eLw4cx6UBgTiiGLeButu', // Replace with your AUTH_TOKEN value
