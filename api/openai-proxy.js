@@ -1,31 +1,29 @@
-// api/openai-proxy.js
-export default function handler(req, res) {
-  // Log the incoming authorization header to check its format
-  console.log('Authorization header:', req.headers.authorization);
-  console.log('Request method:', req.method);
-  console.log('Request headers:', JSON.stringify(req.headers));
-
-  // Log environment variables (without showing actual values)
-  console.log('AUTH_TOKEN exists:', !!process.env.AUTH_TOKEN);
-  console.log('OPENAI_API_KEY exists:', !!process.env.OPENAI_API_KEY);
-  
-  // Optional: Check for authorization
-  // For example, check for an API token in headers
+export default async function handler(req, res) {
+  // Check the authorization header
   const authToken = req.headers.authorization;
   
-  // Make sure AUTH_TOKEN is set in your Vercel environment variables
   if (authToken !== `Bearer ${process.env.AUTH_TOKEN}`) {
     return res.status(403).json({ error: 'Unauthorized' });
   }
   
-  // Get OpenAI API key from environment variables
+  // Get the OpenAI API key
   const apiKey = process.env.OPENAI_API_KEY;
   
-  // Return success response
-  // Note: In a real implementation, you would likely proxy the request to OpenAI
-  // rather than returning the API key directly
-  res.status(200).json({
-    success: true,
-    message: 'API successfully accessed'
-  });
+  // Forward the request to OpenAI
+  try {
+    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${apiKey}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(req.body)
+    });
+    
+    const data = await response.json();
+    return res.status(200).json(data);
+  } catch (error) {
+    console.error('Error calling OpenAI:', error);
+    return res.status(500).json({ error: 'Error calling OpenAI API' });
+  }
 }
